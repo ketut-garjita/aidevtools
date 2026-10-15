@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ecommerce-support-tools": {
+      "command": "python3",
+      "args": ["mcp-server/server.py"],
+      "description": "Custom MCP tooling for order tracking and customer support queue diagnostics"
+    }
+  }
+}

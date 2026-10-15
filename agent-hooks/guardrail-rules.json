@@ -1,0 +1,21 @@
+{
+  "guardrails": [
+    {
+      "id": "prevent-secret-leak",
+      "rule": "block_commit_if_matches_regex",
+      "pattern": "(AIza[0-9A-Za-z-_]{35}|sk-[a-zA-Z0-9]{32,}|ghp_[a-zA-Z0-9]{36})",
+      "severity": "CRITICAL"
+    },
+    {
+      "id": "enforce-openapi-match",
+      "rule": "validate_endpoints_against_openapi",
+      "contract": "openapi.yaml",
+      "severity": "HIGH"
+    },
+    {
+      "id": "restrict-file-write-boundary",
+      "rule": "disallow_modifications_outside_workspace",
+      "severity": "CRITICAL"
+    }
+  ]
+}

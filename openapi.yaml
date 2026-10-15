@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: E-Commerce Customer Support Chat API
+  description: Real-time customer support messaging, session management, and order inquiry API.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local Development Server
+
+paths:
+  /api/health:
+    get:
+      summary: System Health & Agent Presence
+      description: Returns service status, active connections, and online agent counts.
+      responses:
+        '200':
+          description: Service is healthy.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  service:
+                    type: string
+                    example: "ecommerce-customer-support-chat"
+                  online_agents:
+                    type: integer
+                    example: 2
+                  active_conversations:
+                    type: integer
+                    example: 3
+                  total_conversations:
+                    type: integer
+                    example: 12
+
+  /api/orders:
+    get:
+      summary: List Demo Orders
+      description: Returns catalog of available demo orders for quick support testing.
+      responses:
+        '200':
+          description: List of demo order summaries.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  orders:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/OrderSummary'
+
+  /api/orders/{order_id}:
+    get:
+      summary: Get Order Details
+      description: Retrieve shipment status, tracking number, carrier, and item breakdown.
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          description: Order identifier (e.g. ORD-1001)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order details found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    $ref: '#/components/schemas/OrderDetail'
+        '404':
+          description: Order not found.
+
+  /api/canned-responses:
+    get:
+      summary: Get Canned Support Macros
+      description: Returns quick responses for support agents.
+      responses:
+        '200':
+          description: List of canned response templates.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  canned_responses:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CannedResponse'
+
+  /api/conversations:
+    get:
+      summary: List Support Conversations
+      description: Retrieve active, queued, and resolved customer chat sessions.
+      responses:
+        '200':
+          description: List of conversation threads.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  conversations:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Conversation'
+
+  /api/conversations/{conversation_id}/resolve:
+    post:
+      summary: Mark Conversation Resolved
+      description: Closes an active chat conversation.
+      parameters:
+        - name: conversation_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Conversation marked as resolved.
+        '404':
+          description: Conversation not found.
+
+components:
+  schemas:
+    OrderSummary:
+      type: object
+      properties:
+        order_id:
+          type: string
+          example: "ORD-1001"
+        customer_name:
+          type: string
+          example: "Alex Morgan"
+        status:
+          type: string
+          example: "In Transit"
+        total:
+          type: string
+          example: "$237.00"
+
+    OrderDetail:
+      type: object
+      properties:
+        order_id:
+          type: string
+          example: "ORD-1001"
+        customer_name:
+          type: string
+          example: "Alex Morgan"
+        status:
+          type: string
+          example: "In Transit"
+        carrier:
+          type: string
+          example: "FedEx Express"
+        tracking_number:
+          type: string
+          example: "FX-884920194US"
+        estimated_delivery:
+          type: string
+          example: "Tomorrow by 4:00 PM"
+        items:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              qty:
+                type: integer
+              price:
+                type: string
+        total:
+          type: string
+          example: "$237.00"
+        destination:
+          type: string
+        last_update:
+          type: string
+
+    CannedResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "c1"
+        title:
+          type: string
+          example: "Friendly Greeting"
+        text:
+          type: string
+          example: "Hello! Welcome to our store support. How can I assist you today?"
+
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "conv_89fa21b"
+        customer_id:
+          type: string
+          example: "cust_77a9"
+        customer_name:
+          type: string
+          example: "Shopper"
+        status:
+          type: string
+          enum: [queued, active, resolved]
+          example: "active"
+        assigned_agent:
+          type: string
+          nullable: true
+        updated_at:
+          type: number
+        messages:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+              sender:
+                type: string
+              sender_name:
+                type: string
+              text:
+                type: string
+              timestamp:
+                type: number

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  support-chat-app:
+    build:
+      context: ./app_build
+      dockerfile: Dockerfile
+    container_name: ecommerce-support-chat
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - ENV=production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Concierge | Support Agent Dashboard</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/static/css/agent.css" />
+  <link rel="stylesheet" href="/static/css/widget.css" />
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="agent-header">
+    <div class="brand-section">
+      <span class="brand-badge">AGENT DESK</span>
+      <h1 class="brand-title">Aura Support Command Center</h1>
+    </div>
+
+    <div class="header-status-controls">
+      <a href="/" target="_blank" style="color: #9ca3af; font-size: 0.85rem; text-decoration: none; display: flex; align-items: center; gap: 0.35rem;">
+        <span>View Storefront</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
+
+      <div class="agent-profile">
+        <div class="agent-avatar-circle">SJ</div>
+        <div>
+          <div style="font-size: 0.85rem; font-weight: 600;">Sarah Jenkins</div>
+          <div style="font-size: 0.72rem; color: #9ca3af;">Senior Support Lead</div>
+        </div>
+      </div>
+
+      <div class="status-toggle" id="agent-status-toggle">
+        <span class="status-dot-indicator"></span>
+        <span>Online</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3-Pane Work Area -->
+  <main class="agent-layout">
+    
+    <!-- Pane 1: Conversation Queue -->
+    <aside class="conversations-pane">
+      <div class="queue-header">
+        <div class="queue-title">
+          <span>Inquiries Queue</span>
+          <span class="queue-count" id="queue-count-badge">0</span>
+        </div>
+
+        <div class="queue-filter-tabs">
+          <button class="tab-btn active" data-filter="all">All</button>
+          <button class="tab-btn" data-filter="queued">Queued</button>
+          <button class="tab-btn" data-filter="active">Active</button>
+          <button class="tab-btn" data-filter="resolved">Closed</button>
+        </div>
+      </div>
+
+      <div class="queue-list" id="queue-list">
+        <!-- Rendered dynamically by agent.js -->
+      </div>
+    </aside>
+
+    <!-- Pane 2: Live Chat Canvas -->
+    <section class="chat-canvas">
+      <div class="chat-canvas-header">
+        <div class="canvas-customer-details">
+          <h3 id="canvas-title">Select an Inquiry</h3>
+          <p id="canvas-subtitle">Customer context and message thread will appear here</p>
+        </div>
+
+        <button id="btn-resolve-chat" class="btn-resolve" style="display: none;">
+          ✓ Mark Resolved
+        </button>
+      </div>
+
+      <!-- Live Messages Log -->
+      <div class="canvas-messages" id="canvas-messages">
+        <div style="margin: auto; text-align: center; color: #64748b; font-size: 0.9rem;">
+          Select a conversation from the left queue to start responding.
+        </div>
+      </div>
+
+      <!-- Real-time Typing Preview -->
+      <div class="agent-typing-banner" id="agent-typing-banner"></div>
+
+      <!-- Canned Macros Quick Bar -->
+      <div class="canned-macros-bar" id="canned-macros-bar">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Composer Bar -->
+      <div class="canvas-input-bar" id="canvas-input-bar">
+        <input 
+          type="text" 
+          id="agent-input" 
+          class="agent-input-field" 
+          placeholder="Reply to customer... (Press Enter to send)" 
+          autocomplete="off" 
+        />
+        <button id="btn-agent-send" class="btn-agent-send">Send</button>
+      </div>
+    </section>
+
+    <!-- Pane 3: Customer Context & Order Inspector -->
+    <aside class="context-pane">
+      <div class="context-card">
+        <div class="context-card-title">Customer Profile</div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+          <div><span style="color: #9ca3af;">Customer ID:</span> <strong id="context-cust-id">—</strong></div>
+          <div><span style="color: #9ca3af;">Conversation ID:</span> <span id="context-conv-id" style="font-family: monospace; font-size: 0.8rem; color: #818cf8;">—</span></div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="color: #9ca3af;">Status:</span>
+            <span id="context-status">—</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="context-card">
+        <div class="context-card-title">E-Commerce Order Lookup</div>
+        <p style="font-size: 0.78rem; color: #9ca3af; margin-bottom: 0.75rem;">
+          Quickly verify customer shipment status, carrier tracking, and order items.
+        </p>
+
+        <div class="order-search-box">
+          <input 
+            type="text" 
+            id="order-search-input" 
+            class="order-search-input" 
+            placeholder="e.g. ORD-1001" 
+          />
+          <button id="btn-order-search" class="btn-order-search">Search</button>
+        </div>
+
+        <div class="order-details-box" id="order-details-box">
+          <div style="color: #64748b; font-size: 0.8rem; text-align: center;">
+            Enter an Order ID to inspect live details.
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Support Agent Logic -->
+  <script src="/static/js/agent.js"></script>
+</body>
+</html>

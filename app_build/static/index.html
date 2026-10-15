@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Modern Gear | Next-Gen E-Commerce</title>
+  <meta name="description" content="Discover premium audio and lifestyle tech essentials with instant 24/7 real-time support." />
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Core Storefront & Widget Styles -->
+  <link rel="stylesheet" href="/static/css/storefront.css" />
+  <link rel="stylesheet" href="/static/css/widget.css" />
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <nav class="navbar">
+      <a href="/" class="nav-brand">
+        <div class="brand-icon">⚡</div>
+        <span>Aura Gear</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#catalog">Featured</a></li>
+        <li><a href="#orders">Track Orders</a></li>
+        <li><a href="#support" onclick="if(window.triggerOrderChat) window.triggerOrderChat('ORD-1001'); return false;">Help Center</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Direct switch to agent dashboard -->
+        <a href="/agent.html" target="_blank" class="btn-agent-portal" title="Open Support Agent Console in New Tab">
+          <span>🎧 Agent Console</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Real-Time 24/7 Concierge Support Live</span>
+      </div>
+
+      <h1 class="hero-title">
+        Engineered for Sound. <br />
+        <span class="hero-gradient">Designed for Everyday Elegance.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Explore studio-grade wireless acoustics and workspace essentials. Questions about shipping or sizing? Our real-time concierge is waiting in the bottom corner!
+      </p>
+    </section>
+
+    <!-- Quick Demo Orders Callout -->
+    <section id="orders" class="demo-order-callout">
+      <div class="demo-order-text">
+        <h4>⚡ Test Live E-Commerce Order Tracking</h4>
+        <p>Click any test order below to trigger instantaneous automated order lookup in the chat widget:</p>
+      </div>
+      <div class="demo-order-chips">
+        <button class="chip-code" onclick="window.triggerOrderChat('ORD-1001')">#ORD-1001 (FedEx In Transit)</button>
+        <button class="chip-code" onclick="window.triggerOrderChat('ORD-1002')">#ORD-1002 (UPS Delivered)</button>
+        <button class="chip-code" onclick="window.triggerOrderChat('ORD-1003')">#ORD-1003 (Processing)</button>
+      </div>
+    </section>
+
+    <!-- Product Catalog Section -->
+    <section id="catalog" class="catalog-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Trending Arrivals</h2>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Limited seasonal releases with 30-day complimentary return protection.</p>
+        </div>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product Card 1 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            🎧
+            <span class="product-badge">Bestseller</span>
+          </div>
+          <h3 class="product-title">Aura Pro ANC Headphones</h3>
+          <p class="product-desc">40-hour battery life with hybrid noise cancellation and custom 45mm beryllium drivers.</p>
+          <div class="product-footer">
+            <span class="product-price">$249.00</span>
+            <button class="btn-add-cart" onclick="window.triggerOrderChat('ORD-1001')">Inquire</button>
+          </div>
+        </article>
+
+        <!-- Product Card 2 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            ⌨️
+            <span class="product-badge" style="background: rgba(16, 185, 129, 0.85);">New</span>
+          </div>
+          <h3 class="product-title">Linear Mechanical Keyboard</h3>
+          <p class="product-desc">CNC anodized aluminum frame with hot-swappable tactile switches and double-shot PBT keycaps.</p>
+          <div class="product-footer">
+            <span class="product-price">$189.00</span>
+            <button class="btn-add-cart" onclick="window.triggerOrderChat('ORD-1002')">Inquire</button>
+          </div>
+        </article>
+
+        <!-- Product Card 3 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            ☕
+          </div>
+          <h3 class="product-title">Artisan Pour-Over Station</h3>
+          <p class="product-desc">Precision heat-resistant borosilicate glass with stainless micro-mesh filter basket.</p>
+          <div class="product-footer">
+            <span class="product-price">$64.00</span>
+            <button class="btn-add-cart" onclick="window.triggerOrderChat('ORD-1003')">Inquire</button>
+          </div>
+        </article>
+
+        <!-- Product Card 4 -->
+        <article class="product-card">
+          <div class="product-img-wrapper">
+            🎒
+          </div>
+          <h3 class="product-title">Commuter Weatherproof Pack</h3>
+          <p class="product-desc">Waterproof Cordura nylon with dedicated magnetic 16-inch laptop pocket.</p>
+          <div class="product-footer">
+            <span class="product-price">$135.00</span>
+            <button class="btn-add-cart" onclick="window.triggerOrderChat('ORD-1001')">Inquire</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- Embed Customer Support Chat Widget -->
+  <script src="/static/js/widget.js"></script>
+</body>
+</html>
