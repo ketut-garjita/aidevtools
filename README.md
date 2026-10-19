@@ -72,21 +72,7 @@ Traditional support methods (ticketing portals, contact forms, delayed email que
 ## 3. Agent Team Specification
 This project was designed, implemented, and verified using specialized autonomous agent personas:
 
-```text
-[ @pm (Product Manager) ]
-       │  Writes product-spec.md & openapi.yaml
-       ▼
-[ Human Approval Gate ] ──► (Interactive Steering & Feedback)
-       │  Approved!
-       ▼
-[ @engineer (Full-Stack) ] ──► Implements backend, frontend, & state stores
-       ▼
-[ @qa (QA & Security) ]   ──► Verifies WebSockets, writes unit & integration tests
-       ▼
-[ @devops (DevOps Master) ]──► Containerizes via Docker, deploys to Cloud Run, configures CI/CD
-       ▼
-[ @specialist & @oncall-responder ]──► Observability, user-impact alerting, and on-call agent
-```
+![Agent Workflow](assets/agent-workflow.png)
 
 1. **@pm (Product Manager)**: Translates user requirements into technical blueprints ([product-spec.md](product-spec.md), [openapi.yaml](openapi.yaml)).
 2. **@engineer (Full-Stack Engineer)**: Implements modular FastAPI backend, WebSocket connection manager, and glassmorphic UI.
