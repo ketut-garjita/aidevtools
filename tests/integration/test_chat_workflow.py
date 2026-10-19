@@ -8,10 +8,45 @@ import json
 import urllib.request
 import urllib.error
 
-BASE_URL = "http://localhost:8000"
+import os
+import sys
+import time
+import subprocess
+
+BASE_URL = os.environ.get("TEST_BASE_URL", "http://localhost:8000")
 
 
 class TestChatWorkflowIntegration(unittest.TestCase):
+    server_process = None
+
+    @classmethod
+    def setUpClass(cls):
+        # Check if server is already running
+        try:
+            req = urllib.request.Request(f"{BASE_URL}/api/health")
+            with urllib.request.urlopen(req, timeout=1):
+                return
+        except Exception:
+            pass
+
+        # Auto-spawn the FastAPI server for test execution
+        server_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../app_build/server.py"))
+        cls.server_process = subprocess.Popen([sys.executable, server_path])
+        # Poll up to 10 seconds for health check to succeed
+        for _ in range(20):
+            time.sleep(0.5)
+            try:
+                req = urllib.request.Request(f"{BASE_URL}/api/health")
+                with urllib.request.urlopen(req, timeout=1):
+                    return
+            except Exception:
+                continue
+
+    @classmethod
+    def tearDownClass(cls):
+        if cls.server_process:
+            cls.server_process.terminate()
+            cls.server_process.wait()
 
     def _fetch_json(self, path):
         req = urllib.request.Request(f"{BASE_URL}{path}", headers={"User-Agent": "TestClient/1.0"})

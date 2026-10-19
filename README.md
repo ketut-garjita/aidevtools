@@ -1,10 +1,15 @@
 # ⚡ Aura Gear: Real-Time E-Commerce Customer Support Platform
 
-[![CI/CD Pipeline](https://github.com/example/ecommerce-chat/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/example/ecommerce-chat/actions)
+[![CI/CD Pipeline](https://github.com/ketut-garjita/aidevtools/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/ketut-garjita/aidevtools/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python: 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 
 > An asynchronous, ultra-low latency customer support chat platform built specifically for modern e-commerce storefronts. Features an embeddable customer widget with live simulated order tracking and a multi-pane support agent command center.
+
+### 🌐 Live Production Deployment (Cloud Run - Criterion #10)
+- 🛍️ **Storefront & Live Customer Chat**: [https://appbuild-607895321006.asia-southeast2.run.app](https://appbuild-607895321006.asia-southeast2.run.app)
+- 🎧 **Support Agent Command Console**: [https://appbuild-607895321006.asia-southeast2.run.app/agent.html](https://appbuild-607895321006.asia-southeast2.run.app/agent.html)
+- 🩺 **API Health Check**: [https://appbuild-607895321006.asia-southeast2.run.app/api/health](https://appbuild-607895321006.asia-southeast2.run.app/api/health)
 
 ---
 
@@ -120,3 +125,11 @@ python3 tests/integration/test_chat_workflow.py
 ├── agent-hooks/                       # Pre-commit guardrails & schema validators
 └── mcp-server/                        # Model Context Protocol server & tools
 ```
+
+## 7. 🚀 Cloud Run Production Deployment
+- **Storefront & Live Chat Widget**: [https://appbuild-607895321006.asia-southeast2.run.app](https://appbuild-607895321006.asia-southeast2.run.app)
+
+- **Support Agent Command Console**: [https://appbuild-607895321006.asia-southeast2.run.app/agent.html](https://appbuild-607895321006.asia-southeast2.run.app/agent.html)
+
+- **API Health Check**: [https://appbuild-607895321006.asia-southeast2.run.app/api/health](https://appbuild-607895321006.asia-southeast2.run.app/api/health)
+
