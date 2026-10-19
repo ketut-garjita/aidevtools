@@ -20,6 +20,7 @@ Every project generated or maintained within this workspace must include the fol
 ├── frontend/                          # Functional, well-structured frontend application with unit tests
 ├── backend/                           # API-contract-compliant backend service with unit tests
 ├── docs/                              # System documentation & architectural blueprints
+│   ├── user-guide.md                  # Comprehensive frontend user guide & operational manual
 │   ├── architecture.md                # System component interactions and data flow
 │   ├── agent-extension-pack.md        # Agent capabilities, custom prompts, and workflows documentation
 │   └── permissions.md                 # Security, tool execution, and environment permission boundaries

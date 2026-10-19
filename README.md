@@ -98,6 +98,7 @@ The repository maintains explicit context governance starting with [AGENTS.md](A
 - **[security/ai-data-policy.md](security/ai-data-policy.md)**: Telemetry safety guidelines (zero PII/credentials sent to telemetry).
 - **[security/security-audit.md](security/security-audit.md)**: Vulnerability mitigations and dependency audit checklists.
 - **[ops/runbook.md](ops/runbook.md)**: Operational diagnosis runbook, user-impact alert rules, and on-call automation.
+- **[docs/user-guide.md](docs/user-guide.md)**: Comprehensive frontend user guide, role-based workflows, and live demo procedures.
 
 ---
 
@@ -246,7 +247,11 @@ When an alert triggers, the **On-Call Responder Agent (`@oncall-responder`)** wa
 ├── tests/                             # Automated test suites
 │   ├── unit/                          # Unit tests (order catalog, chat store)
 │   └── integration/                   # Integration tests (health, orders, macros)
-├── docs/                              # Architecture, agent extension pack, permissions
+├── docs/                              # User guide, architecture, extension pack, permissions
+│   ├── user-guide.md                  # Complete frontend user guide & operational manual
+│   ├── architecture.md                # Component interactions & system topology
+│   ├── agent-extension-pack.md        # Agent tools, prompts, & capabilities
+│   └── permissions.md                 # Security boundaries & execution safety
 ├── security/                          # Security audits & AI data governance policies
 ├── ops/                               # Runbooks, alert definitions, & health check probe
 ├── agent-capabilities/                # Prompt sequences & on-call responder capabilities
