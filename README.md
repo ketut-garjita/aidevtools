@@ -165,7 +165,7 @@ Deployment reproduction guide using the AGY CLI is documented in [deploy_cloud_r
 
 ---
 
-## 9. CI/CD Pipeline (Criterion #9 - 3 / 3 Points)
+## 9. CI/CD Pipeline
 Automated multi-stage continuous integration and continuous deployment is configured via GitHub Actions in [.github/workflows/ci-cd.yml](.github/workflows/ci-cd.yml):
 
 ```text
