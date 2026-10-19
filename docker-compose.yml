@@ -10,9 +10,16 @@ services:
     environment:
       - PORT=8000
       - ENV=production
+      - DATABASE_PATH=/app/data/chat.db
+    volumes:
+      - chat-data:/app/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
       interval: 30s
       timeout: 5s
       retries: 3
       start_period: 5s
+
+volumes:
+  chat-data:
+    driver: local
