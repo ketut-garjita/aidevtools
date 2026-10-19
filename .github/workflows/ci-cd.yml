@@ -13,8 +13,8 @@ on:
         default: 'production'
         type: choice
         options:
-          - dev
           - production
+          - dev
 
 jobs:
   test-and-lint:
