@@ -11,21 +11,27 @@ gcloud projects create aidevtools
 
 2. **Link billing**
 ```bash
-gcloud alpha billing projects link [BILLING-ACCOUNT-ID] --project=aidevtools
+ gcloud billing projects link aidevtools2 --billing-account=[Billing account ID]
 ```
 
-3. **Enable APIs**
+3. **Set Project ID**
+```bash
+gcloud config set project [Project ID]
+gcloud config get-value project
+```
+
+4. **Enable APIs**
 ```bash
 gcloud services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com
 ```
 
-4. **Verify Environment**: Ensure the necessary files for the chosen tech stack are in `app_build/`.
+5. **Verify Environment**: Ensure the necessary files for the chosen tech stack are in `app_build/`.
 
-5. **Containerize**: Use the IDE terminal to navigate to `app_build/` and run 
+6. **Containerize**: Use the IDE terminal to navigate to `app_build/` and run 
 ```bash
 gcloud run deploy --source .
 ```
 
-6. **Configure**: If prompted by the CLI tool, select your region and allow unauthenticated invocations so the web app is public.
+7. **Configure**: If prompted by the CLI tool, select your region and allow unauthenticated invocations so the web app is public.
 
-7. **Report**: Output the live production Google Cloud Run URL to the user!
+8. **Report**: Output the live production Google Cloud Run URL to the user!
