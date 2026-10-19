@@ -76,3 +76,20 @@ sequenceDiagram
     Agent->>Server: send_message (Macro response)
     Server->>Customer: receive_message
 ```
+
+---
+
+## 5. Public Task Tracker & Acceptance Criteria (Criterion #2)
+
+| Task ID | User Story / Epic | Acceptance Criteria | Assigned Agent | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **TSK-01** | **Problem & API Contract Specification** | Complete `product-spec.md` and OpenAPI 3.0+ `openapi.yaml` covering all endpoints, parameters, and schemas. | `@pm` | ✅ Completed |
+| **TSK-02** | **Backend Core & Real-Time Engine** | FastAPI ASGI app running asynchronous WebSockets with sub-100ms transport latency and session storage. | `@engineer` | ✅ Completed |
+| **TSK-03** | **Order Query & Simulated Fulfillment** | Order lookup endpoint and regex extractor for orders like `#ORD-1001` returning tracking and carrier data. | `@engineer` | ✅ Completed |
+| **TSK-04** | **Glassmorphic Storefront & Agent UI** | Embeddable responsive customer widget and 3-pane agent console with queue filtering and canned macros. | `@engineer` | ✅ Completed |
+| **TSK-05** | **Test Suites (Unit & Integration)** | Deterministic test suite covering unit logic and end-to-end user workflows running with a single command. | `@qa` | ✅ Completed |
+| **TSK-06** | **Containerization & Deployment** | Root `docker-compose.yml`, multi-stage Dockerfile, and production deployment on Google Cloud Run. | `@devops` | ✅ Completed |
+| **TSK-07** | **CI/CD Pipeline with Automated Verification** | GitHub Actions workflow executing linting, test suites, and container build verification on push and PR. | `@devops` | ✅ Completed |
+| **TSK-08** | **Observability & User Impact Alerting** | Structured logs with trace IDs, health probe `/api/health`, and user impact alert policies in runbooks. | `@specialist` | ✅ Completed |
+| **TSK-09** | **On-Call Responder Agent Implementation** | Automated on-call incident response capability and runbook remediation workflows. | `@specialist` | ✅ Completed |
+

@@ -32,9 +32,9 @@ jobs:
           # Stop build if there are Python syntax errors or undefined names
           flake8 app_build/ --count --select=E9,F63,F7,F82 --show-source --statistics
 
-      - name: Run Integration Tests
+      - name: Run Unit & Integration Tests
         run: |
-          python3 tests/integration/test_chat_workflow.py
+          python3 -m unittest discover tests
 
   build-and-deploy:
     name: Build Container & Verify Deployability
