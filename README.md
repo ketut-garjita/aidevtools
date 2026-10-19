@@ -160,7 +160,7 @@ The full system, including all static assets and server components, runs via Doc
 
 ```bash
 # Single command to build and launch the containerized application
-docker compose up --build
+docker compose up -d --build
 ```
 
 - **Dockerfile**: Multi-stage, minimal attack surface Python 3.11 image in `app_build/Dockerfile`.
