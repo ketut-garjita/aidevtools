@@ -86,6 +86,18 @@ This project was designed, implemented, and verified using specialized autonomou
 
 Full agent profiles are documented in [.agents/agents.md](.agents/agents.md).
 
+### 🛠️ Agent Skills & Workflow Execution Engine (`.agents/`)
+The `.agents/` directory serves as the **Workspace Customization Root** for Antigravity, equipping autonomous agents with deterministic prompt skills and pipeline workflows:
+
+| Agent Persona | Triggered Skill | Skill Instruction File | Target Deliverables |
+| :--- | :--- | :--- | :--- |
+| **@pm** | `write_specs.md` | [`.agents/skills/write_specs.md`](.agents/skills/write_specs.md) | `product-spec.md`, `openapi.yaml`, `docs/architecture.md` |
+| **@engineer** | `generate_code.md` | [`.agents/skills/generate_code.md`](.agents/skills/generate_code.md) | `app_build/server.py`, `app_build/static/`, `app_build/lib/` |
+| **@qa** | `audit_code.md` | [`.agents/skills/audit_code.md`](.agents/skills/audit_code.md) | `tests/unit/`, `tests/integration/`, `security/security-audit.md` |
+| **@devops** | `deploy_cloud_run.md` | [`.agents/skills/deploy_cloud_run.md`](.agents/skills/deploy_cloud_run.md) | `Dockerfile`, `docker-compose.yml`, Google Cloud Run deployment |
+| **@specialist** | `extend_agent.md` | [`.agents/skills/extend_agent.md`](.agents/skills/extend_agent.md) | `mcp-server/`, `agent-capabilities/`, `agent-hooks/` |
+| **Team Pipeline** | `startcycle.md` | [`.agents/workflows/startcycle.md`](.agents/workflows/startcycle.md) | End-to-end multi-agent orchestration and human approval gate |
+
 ---
 
 ## 4. Context Management
@@ -98,6 +110,7 @@ The repository maintains explicit context governance starting with [AGENTS.md](A
 - **[security/ai-data-policy.md](security/ai-data-policy.md)**: Telemetry safety guidelines (zero PII/credentials sent to telemetry).
 - **[security/security-audit.md](security/security-audit.md)**: Vulnerability mitigations and dependency audit checklists.
 - **[ops/runbook.md](ops/runbook.md)**: Operational diagnosis runbook, user-impact alert rules, and on-call automation.
+- **[.agents/](.agents/)**: Workspace customization root housing autonomous agent profiles (`agents.md`), custom skills (`skills/`), and orchestration workflows (`workflows/`).
 - **[docs/user-guide.md](docs/user-guide.md)**: Comprehensive frontend user guide, role-based workflows, and live demo procedures.
 
 ---
@@ -231,6 +244,17 @@ When an alert triggers, the **On-Call Responder Agent (`@oncall-responder`)** wa
 ## 13. Repository Layout
 
 ```text
+├── .agents/                           # Antigravity Workspace Customizations Root
+│   ├── agents.md                      # Team personas, boundaries, & governance roles
+│   ├── skills/                        # Autonomous skill instruction sets
+│   │   ├── write_specs.md             # @pm specification generation skill
+│   │   ├── generate_code.md           # @engineer full-stack code synthesis skill
+│   │   ├── audit_code.md              # @qa code audit and test generation skill
+│   │   ├── deploy_app.md              # @devops local containerization skill
+│   │   ├── deploy_cloud_run.md        # @devops Google Cloud Run deployment skill
+│   │   └── extend_agent.md            # @specialist agent tooling & MCP skill
+│   └── workflows/                     # Automated agent pipeline workflows
+│       └── startcycle.md              # Full-cycle autonomous development trigger
 ├── README.md                          # Master overview aligned with the 12 evaluation criteria
 ├── product-spec.md                    # Technical specification & public task tracker
 ├── AGENTS.md                          # Master governance, rubric criteria, and agent matrix
