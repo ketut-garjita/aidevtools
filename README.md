@@ -194,6 +194,8 @@ Automated multi-stage continuous integration and continuous deployment is config
 └────────────────────────────────────────┘
 ```
 
+![CI/CD Manual Deploy to Production](assets/ci-cd-manual-deploy-to-prod.png)
+
 1. **Continuous Integration (CI)**: Automatically triggers on every push and pull request to `main`. Executes code quality linting with `flake8` and runs all 14 unit and integration tests (`python3 -m unittest discover tests`).
 2. **Continuous Deployment to Dev (CD Dev)**: Upon passing tests, the pipeline automatically compiles and verifies the container image for the Development environment (`ecommerce-support-chat:dev`).
 3. **Manual Deployment to Production (CD Production)**: Production deployments are safeguarded behind a manual approval gate via GitHub Actions `workflow_dispatch`. Reviewers and maintainers can trigger production promotion with one click, which runs live verification against the Cloud Run production service.
