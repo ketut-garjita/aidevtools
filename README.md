@@ -125,11 +125,3 @@ python3 tests/integration/test_chat_workflow.py
 ├── agent-hooks/                       # Pre-commit guardrails & schema validators
 └── mcp-server/                        # Model Context Protocol server & tools
 ```
-
-## 7. 🚀 Cloud Run Production Deployment
-- **Storefront & Live Chat Widget**: [https://appbuild-607895321006.asia-southeast2.run.app](https://appbuild-607895321006.asia-southeast2.run.app)
-
-- **Support Agent Command Console**: [https://appbuild-607895321006.asia-southeast2.run.app/agent.html](https://appbuild-607895321006.asia-southeast2.run.app/agent.html)
-
-- **API Health Check**: [https://appbuild-607895321006.asia-southeast2.run.app/api/health](https://appbuild-607895321006.asia-southeast2.run.app/api/health)
-
