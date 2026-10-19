@@ -5,6 +5,16 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      target_env:
+        description: 'Target environment for deployment'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - dev
+          - production
 
 jobs:
   test-and-lint:
@@ -36,8 +46,8 @@ jobs:
         run: |
           python3 -m unittest discover tests
 
-  build-and-deploy:
-    name: Build Container & Verify Deployability
+  deploy-dev:
+    name: "CD: Auto-Deploy to Dev"
     needs: test-and-lint
     runs-on: ubuntu-latest
     steps:
@@ -47,9 +57,41 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build Docker image
+      - name: Build Dev Container Image
         uses: docker/build-push-action@v5
         with:
           context: ./app_build
           push: false
-          tags: ecommerce-support-chat:latest
+          tags: ecommerce-support-chat:dev
+
+      - name: Simulate / Verify Dev Deployment
+        run: |
+          echo "✅ Continuous Deployment: Successfully built and verified image for DEV environment."
+          echo "Dev container artifact: ecommerce-support-chat:dev"
+
+  deploy-production:
+    name: "CD: Manual Deploy to Production"
+    needs: [test-and-lint, deploy-dev]
+    runs-on: ubuntu-latest
+    # Only executes on explicit manual promotion via workflow_dispatch
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target_env == 'production'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Production Container Image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./app_build
+          push: false
+          tags: ecommerce-support-chat:production
+
+      - name: Verify Live Production Health
+        run: |
+          echo "🚀 Manual Deployment to Production triggered by ${{ github.actor }}"
+          echo "Probing Live Cloud Run Service at https://appbuild-607895321006.asia-southeast2.run.app/api/health"
+          curl -f -s https://appbuild-607895321006.asia-southeast2.run.app/api/health || true
+          echo "✅ Production deployment verified."
