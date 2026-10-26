@@ -47,7 +47,7 @@ class TestChatStoreUnit(unittest.IsolatedAsyncioTestCase):
 
     async def asyncSetUp(self):
         self._tmp = tempfile.TemporaryDirectory()
-        self.store = ChatStore(os.path.join(self._tmp.name, "chat.db"))  # sesuaikan parameter
+        self.store = ChatStore(os.path.join(self._tmp.name, "chat.db")) 
 
     async def asyncTearDown(self):
         self._tmp.cleanup()
