@@ -8,14 +8,9 @@
 
 ---
 
-## 🌐 Live Production Deployment
-
-- 🛍️ **Storefront & Live Customer Chat**: [https://appbuild-607895321006.asia-southeast2.run.app](https://appbuild-607895321006.asia-southeast2.run.app)
+## 🛍️ Storefront & Customer Chat
 
 ![Aura Gear](assets/aura-gear.png)
-
-- 🎧 **Support Agent Command Console**: [https://appbuild-607895321006.asia-southeast2.run.app/agent.html](https://appbuild-607895321006.asia-southeast2.run.app/agent.html)
-- 🩺 **Operational Health Endpoint**: [https://appbuild-607895321006.asia-southeast2.run.app/api/health](https://appbuild-607895321006.asia-southeast2.run.app/api/health)
 
 ---
 
