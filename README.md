@@ -170,9 +170,11 @@ docker compose up -d --build
 
 ## 8. Cloud Run Deployment
 
-_"The demo is not kept running permanently. You can deploy it yourself using the instructions in the repo."_
+It was deployed and verified on Google Cloud Run, with CI/CD via GitHub Actions.
 
 Deployment reproduction guide using the AGY CLI is documented in [deploy_cloud_run.md](.agents/skills/deploy_cloud_run.md).
+
+_"The demo is not kept running permanently. You can deploy it yourself using the instructions in the repo."_
 
 ---
 
