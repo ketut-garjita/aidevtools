@@ -5,6 +5,7 @@ Unit Tests for E-Commerce Order Catalog & Chat Store Logic
 import unittest
 import sys
 import os
+import tempfile
 
 # Add app_build to module search path
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../app_build")))
@@ -45,7 +46,11 @@ class TestOrderCatalogUnit(unittest.TestCase):
 class TestChatStoreUnit(unittest.IsolatedAsyncioTestCase):
 
     async def asyncSetUp(self):
-        self.store = ChatStore()
+        self._tmp = tempfile.TemporaryDirectory()
+        self.store = ChatStore(os.path.join(self._tmp.name, "chat.db"))  # sesuaikan parameter
+
+    async def asyncTearDown(self):
+        self._tmp.cleanup()
 
     async def test_create_and_get_conversation(self):
         conv = await self.store.get_or_create_conversation("cust_01", "Alice")
@@ -62,6 +67,10 @@ class TestChatStoreUnit(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(msg["text"], "Hello support!")
 
         conv_fetched = await self.store.get_conversation(conv["id"])
+
+        for m in conv_fetched["messages"]:
+            print(m["sender"], "|", m["text"])
+
         # Initial greeting + added message = 2 messages
         self.assertEqual(len(conv_fetched["messages"]), 2)
 
