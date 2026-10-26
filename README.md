@@ -168,12 +168,9 @@ docker compose up -d --build
 
 ---
 
-## 8. Deployment (Live Public Cloud Run URL)
-The application is deployed to Google Cloud Run and publicly accessible:
+## 8. Cloud Run Deployment
 
-- **Live Storefront & Chat Concierge**: [https://appbuild-607895321006.asia-southeast2.run.app](https://appbuild-607895321006.asia-southeast2.run.app)
-- **Live Support Agent Console**: [https://appbuild-607895321006.asia-southeast2.run.app/agent.html](https://appbuild-607895321006.asia-southeast2.run.app/agent.html)
-- **Live Health Endpoint**: [https://appbuild-607895321006.asia-southeast2.run.app/api/health](https://appbuild-607895321006.asia-southeast2.run.app/api/health)
+_"The demo is not kept running permanently. You can deploy it yourself using the instructions in the repo."_
 
 Deployment reproduction guide using the AGY CLI is documented in [deploy_cloud_run.md](.agents/skills/deploy_cloud_run.md).
 
@@ -186,7 +183,7 @@ Automated multi-stage continuous integration and continuous deployment is config
 [ Git Push / Pull Request ]
             │
             ▼
-┌────────────────────────────────────────┐
+:┌────────────────────────────────────────┐
 │ Stage 1: CI (Lint & Automated Tests)   │
 │  - flake8 syntax & code style check    │
 │  - python3 -m unittest discover tests  │
