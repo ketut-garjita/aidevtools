@@ -176,6 +176,8 @@ Deployment reproduction guide using the AGY CLI is documented in [deploy_cloud_r
 
 _"The demo is not kept running permanently. You can deploy it yourself using the instructions in the repo."_
 
+![Aura Gear on Cloud](assets/aura-gear-cloud.png)
+
 ---
 
 ## 9. CI/CD Pipeline
