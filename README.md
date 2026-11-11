@@ -173,6 +173,9 @@ _"The demo is not kept running permanently. You can deploy it yourself using the
 
 ![Aura Gear on Cloud](assets/aura-gear-cloud.png)
 
+*Note: Service Detail - Scaling*
+![Service Detail - Scaling](assets/service-detail-scaling.png)
+
 ---
 
 ## 9. CI/CD Pipeline
@@ -216,6 +219,13 @@ Automated multi-stage continuous integration and continuous deployment is config
 - **Key User Journey Tracing**: WebSocket connection lifecycle and message dispatch are tagged with request-correlated trace IDs (`trace_id`).
 - **Telemetry & Privacy**: In strict compliance with [security/ai-data-policy.md](security/ai-data-policy.md), no customer personal information, payment details, or credentials are sent to telemetry.
 - **Signals UI**: Logs, latency metrics, and connection counts are collected and viewable via **Google Cloud Logging (Logs Explorer)** and the live endpoint `/api/health`.
+- **Metrics**
+![Observability-Metric-1](assets/observability-metrics-1.png)
+![Observability-Metric-2](assets/observability-metrics-2.png)
+![Observability-Metric-3](assets/observability-metrics-3.png)
+![Observability-Metric-4](assets/observability-metrics-4.png)
+- **Cost [IDR - Indonesia Rupiah]**
+![Observability-Cost](assets/observability-cost.png)
 
 ---
 
