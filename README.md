@@ -185,7 +185,7 @@ Automated multi-stage continuous integration and continuous deployment is config
 [ Git Push / Pull Request ]
             │
             ▼
-:┌────────────────────────────────────────┐
+┌────────────────────────────────────────┐
 │ Stage 1: CI (Lint & Automated Tests)   │
 │  - flake8 syntax & code style check    │
 │  - python3 -m unittest discover tests  │
