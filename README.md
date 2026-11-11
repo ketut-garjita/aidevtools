@@ -118,8 +118,14 @@ The full-stack application connects frontend, backend, and persistent data stora
 - **Data Persistence**: Thread-safe asynchronous chat store (`app_build/lib/chat_store.py`) persisting conversations, messages, and agent assignments with session recovery.
 
 ### Run Locally with a Single Command
+Clone Repository:
 ```bash
-# Single command to start the full-stack application
+git clone https://github.com/ketut-garjita/aidevtools.git
+```
+
+Start the full-stack application:
+```bash
+cd aidevtools
 python3 app_build/server.py
 ```
 Open your browser to:
